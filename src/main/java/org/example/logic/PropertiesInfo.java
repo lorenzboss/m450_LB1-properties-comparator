@@ -1,7 +1,7 @@
 package org.example.logic;
 
 import java.util.List;
-import org.example.datatypes.properties.Property;
+import org.example.properties.Property;
 
 /**
  * This class is responsible for printing the properties in different formats.

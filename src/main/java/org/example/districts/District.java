@@ -1,4 +1,4 @@
-package org.example.datatypes.districts;
+package org.example.districts;
 
 public record District(
     int district_number,

@@ -1,4 +1,4 @@
-package org.example.datatypes.properties;
+package org.example.properties;
 
 /**
  * This class represents a property.

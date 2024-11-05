@@ -3,11 +3,11 @@ package org.example;
 import java.io.IOException;
 import java.util.List;
 
-import org.example.datatypes.districts.District;
-import org.example.datatypes.districts.JsonToDistricts;
+import org.example.districts.District;
+import org.example.districts.JsonToDistricts;
 import org.example.logic.TestFunctions;
-import org.example.datatypes.properties.JsonToProperties;
-import org.example.datatypes.properties.Property;
+import org.example.properties.JsonToProperties;
+import org.example.properties.Property;
 
 /**
  * This class is responsible for executing the logic methods.

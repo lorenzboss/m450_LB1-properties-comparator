@@ -2,7 +2,7 @@ package org.example.logic;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import org.example.datatypes.properties.Property;
+import org.example.properties.Property;
 
 /**
  * This class is responsible for calculating the number of sales in different formats.

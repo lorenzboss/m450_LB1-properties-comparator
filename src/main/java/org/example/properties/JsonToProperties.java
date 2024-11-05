@@ -1,4 +1,4 @@
-package org.example.datatypes.properties;
+package org.example.properties;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,8 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
-import org.example.datatypes.properties.deserializers.PriceDeserializer;
-import org.example.datatypes.properties.deserializers.RoomsDeserializer;
+import org.example.properties.deserializers.PriceDeserializer;
+import org.example.properties.deserializers.RoomsDeserializer;
 
 /**
  * This class is responsible for converting a json file to a list of properties.

@@ -1,4 +1,4 @@
-package org.example.datatypes.districts;
+package org.example.districts;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

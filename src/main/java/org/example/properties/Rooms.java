@@ -1,4 +1,4 @@
-package org.example.datatypes.properties;
+package org.example.properties;
 
 /**
  * Enum for the number of rooms.
