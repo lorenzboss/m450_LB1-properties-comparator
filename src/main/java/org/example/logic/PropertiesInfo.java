@@ -26,8 +26,8 @@ public class PropertiesInfo {
         .forEach(
             property -> {
               System.out.println("Year:     " + property.year());
-              System.out.println("District: " + property.district());
-              System.out.println("R ooms:    " + property.rooms());
+              System.out.println("District: " + property.district_number());
+              System.out.println("Rooms:    " + property.rooms());
               System.out.println("Price:    " + property.price());
               System.out.println();
             });
@@ -54,6 +54,9 @@ public class PropertiesInfo {
             property ->
                 System.out.printf(
                     "%d %-10s %-9s %7d%n",
-                    property.year(), property.district(), property.rooms(), property.price()));
+                    property.year(),
+                    property.district_number(),
+                    property.rooms(),
+                    property.price()));
   }
 }

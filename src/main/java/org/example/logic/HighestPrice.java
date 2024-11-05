@@ -58,7 +58,7 @@ public class HighestPrice {
                     "%-4d %-5d %-10s %-10s %-10d%n",
                     index.getAndIncrement(),
                     property.year(),
-                    property.district(),
+                    property.district_number(),
                     property.rooms(),
                     property.price()));
   }
