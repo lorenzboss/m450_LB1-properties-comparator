@@ -22,7 +22,7 @@ public class NumberOfSales {
    */
   public static void numberOfSales(List<Property> propertyList) {
     System.out.println("\n\n");
-    System.out.println("Number of properties sold: " + propertyList.stream().count());
+    System.out.println("Number of properties sold: " + propertyList.size());
   }
 
   /**
