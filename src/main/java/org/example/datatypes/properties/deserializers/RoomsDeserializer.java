@@ -1,11 +1,11 @@
-package org.example.properties.deserializers;
+package org.example.datatypes.properties.deserializers;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import org.example.properties.Rooms;
+import org.example.datatypes.properties.Rooms;
 
 /**
  * Deserializer for the number of rooms, which is represented as a string in the json file.

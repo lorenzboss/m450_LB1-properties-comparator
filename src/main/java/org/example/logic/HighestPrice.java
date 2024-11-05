@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.example.properties.Property;
+import org.example.datatypes.properties.Property;
 
 /**
  * This class is responsible for calculating the highest price of properties.

@@ -2,7 +2,7 @@ package org.example.logic;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import org.example.properties.Property;
+import org.example.datatypes.properties.Property;
 
 /**
  * This class is responsible for calculating the number of sales in different formats.
@@ -39,5 +39,4 @@ public class NumberOfSales {
             entry ->
                 System.out.printf("%d: Sold properties: %d%n", entry.getKey(), entry.getValue()));
   }
-
 }

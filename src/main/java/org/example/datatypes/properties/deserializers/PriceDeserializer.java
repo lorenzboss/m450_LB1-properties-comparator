@@ -1,4 +1,4 @@
-package org.example.properties.deserializers;
+package org.example.datatypes.properties.deserializers;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

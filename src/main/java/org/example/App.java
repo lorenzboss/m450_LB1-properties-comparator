@@ -2,11 +2,12 @@ package org.example;
 
 import java.io.IOException;
 import java.util.List;
+
+import org.example.datatypes.districts.District;
+import org.example.datatypes.districts.JsonToDistricts;
 import org.example.logic.TestFunctions;
-import org.example.properties.District;
-import org.example.properties.JsonToProperties;
-import org.example.properties.Property;
-import org.example.properties.Rooms;
+import org.example.datatypes.properties.JsonToProperties;
+import org.example.datatypes.properties.Property;
 
 /**
  * This class is responsible for executing the logic methods.
@@ -21,5 +22,9 @@ public class App {
         JsonToProperties.convertJsonToProperties("src/main/resources/properties.json");
 
     TestFunctions.testFunction(properties);
+
+    List<District> districts =
+        JsonToDistricts.convertJsonToDistricts("src/main/resources/districts.json");
+    System.out.println(districts);
   }
 }

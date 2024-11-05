@@ -1,8 +1,7 @@
 package org.example.logic;
 
 import java.util.List;
-import org.example.properties.Property;
-import org.example.properties.Rooms;
+import org.example.datatypes.properties.Property;
 
 /**
  * This class executes all logic methods once for the functional and once for the imperative
