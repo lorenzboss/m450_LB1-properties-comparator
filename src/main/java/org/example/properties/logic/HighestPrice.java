@@ -1,4 +1,4 @@
-package org.example.logic;
+package org.example.properties.logic;
 
 import java.util.Comparator;
 import java.util.List;

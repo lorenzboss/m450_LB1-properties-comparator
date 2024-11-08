@@ -1,4 +1,4 @@
-package org.example.logic;
+package org.example.properties.logic;
 
 import java.util.*;
 import java.util.stream.Collectors;

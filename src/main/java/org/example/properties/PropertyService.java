@@ -2,9 +2,9 @@ package org.example.properties;
 
 import java.io.IOException;
 import java.util.List;
-import org.example.logic.AveragePrice;
-import org.example.logic.HighestPrice;
-import org.example.logic.NumberOfSales;
+import org.example.properties.logic.AveragePrice;
+import org.example.properties.logic.HighestPrice;
+import org.example.properties.logic.NumberOfSales;
 
 /**
  * This class gets the properties and executes the property logic.
