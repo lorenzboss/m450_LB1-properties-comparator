@@ -25,7 +25,7 @@ public class JsonToProperties {
    * @return the list of properties
    * @throws IOException if the file is not found
    */
-  public static List<Property> convertJsonToProperties(String filePath) throws IOException {
+  public List<Property> convertJsonToProperties(String filePath) throws IOException {
     GsonBuilder gsonBuilder = new GsonBuilder();
     gsonBuilder.registerTypeAdapter(Rooms.class, new RoomsDeserializer());
     gsonBuilder.registerTypeAdapter(Integer.class, new PriceDeserializer());

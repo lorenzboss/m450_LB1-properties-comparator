@@ -23,7 +23,7 @@ public class JsonToDistricts {
    * @return the list of districts
    * @throws IOException if the file is not found
    */
-  public static List<District> convertJsonToDistricts(String filePath) throws IOException {
+  public List<District> convertJsonToDistricts(String filePath) throws IOException {
     GsonBuilder gsonBuilder = new GsonBuilder();
     Gson gson = gsonBuilder.create();
 
