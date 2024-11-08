@@ -3,6 +3,8 @@ package org.example.logic;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.example.properties.Property;
+import org.example.properties.PropertyService;
+import org.example.properties.Rooms;
 
 /**
  * This class is responsible for calculating the average price of properties in different formats.
@@ -15,42 +17,34 @@ public class AveragePrice {
   /**
    * Prints the average price per district_number.
    *
-   * @param propertyList the list of properties
+   * @return the list of the average price per district_number
    */
-  public static void averagePricePerNumberOfRooms(List<Property> propertyList) {
-    System.out.println("\n\n");
-    System.out.println("Average price per number of rooms");
-    propertyList.stream()
+  public static List<Map.Entry<Rooms, Double>> averagePricePerNumberOfRooms() {
+    List<Property> propertyList = PropertyService.getProperties();
+
+    return propertyList.stream()
         .filter(property -> property.price() != null)
         .collect(Collectors.groupingBy(Property::rooms, Collectors.averagingInt(Property::price)))
         .entrySet()
         .stream()
         .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-        .forEach(
-            entry ->
-                System.out.printf("Rooms: %9s, price: %.2f%n", entry.getKey(), entry.getValue()));
+        .toList();
   }
 
   /**
-   * Prints the average price per district_number.
+   * Prints the average price per year.
    *
-   * @param propertyList the list of properties
+   * @return the list of the average price per year
    */
-  public static void averagePricePerYear(List<Property> propertyList) {
-    System.out.println("\n\n");
-    System.out.println("Average price per year for properties.");
+  public static List<Map.Entry<Integer, Double>> averagePricePerYear() {
+    List<Property> propertyList = PropertyService.getProperties();
 
-    propertyList.stream()
+    return propertyList.stream()
         .filter(property -> property.price() != null)
         .collect(Collectors.groupingBy(Property::year, Collectors.averagingInt(Property::price)))
         .entrySet()
         .stream()
         .sorted(Map.Entry.comparingByKey())
-        .toList()
-        .forEach(
-            integerDoubleEntry ->
-                System.out.printf(
-                    "year: %d, average price: %.2f%n",
-                    integerDoubleEntry.getKey(), integerDoubleEntry.getValue()));
+        .toList();
   }
 }

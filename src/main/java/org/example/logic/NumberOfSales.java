@@ -3,6 +3,7 @@ package org.example.logic;
 import java.util.*;
 import java.util.stream.Collectors;
 import org.example.properties.Property;
+import org.example.properties.PropertyService;
 
 /**
  * This class is responsible for calculating the number of sales in different formats.
@@ -13,30 +14,28 @@ import org.example.properties.Property;
 public class NumberOfSales {
 
   /**
-   * Prints the number of properties sold.
+   * Calculates the number of sales.
    *
-   * @param propertyList the list of properties
+   * @return the number of sales
    */
-  public static void numberOfSales(List<Property> propertyList) {
-    System.out.println("\n\n");
-    System.out.println("Number of properties sold: " + propertyList.size());
+  public static int numberOfSales() {
+    List<Property> propertyList = PropertyService.getProperties();
+    return propertyList.size();
   }
 
   /**
-   * Prints the number of sales per year.
+   * Calculates the number of sales per year.
    *
-   * @param propertyList the list of properties
+   * @return the list of sales per year
    */
-  public static void numberOfSalesPerYear(List<Property> propertyList) {
-    System.out.println("\n\n");
-    System.out.println("Number of sales per year: ");
-    propertyList.stream()
+  public static List<Map.Entry<Integer, Long>> numberOfSalesPerYear() {
+    List<Property> propertyList = PropertyService.getProperties();
+
+    return propertyList.stream()
         .collect(Collectors.groupingBy(Property::year, Collectors.counting()))
         .entrySet()
         .stream()
         .sorted(Map.Entry.comparingByKey())
-        .forEach(
-            entry ->
-                System.out.printf("%d: Sold properties: %d%n", entry.getKey(), entry.getValue()));
+        .toList();
   }
 }
