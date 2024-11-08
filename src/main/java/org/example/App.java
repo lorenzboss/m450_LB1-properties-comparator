@@ -1,8 +1,5 @@
 package org.example;
 
-import org.example.districts.DistrictService;
-import org.example.properties.PropertyService;
-
 /**
  * This class is responsible for executing the logic methods.
  *
@@ -10,12 +7,10 @@ import org.example.properties.PropertyService;
  * @version 1.0
  */
 public class App {
+
   public static void main(String[] args) {
-
-    PropertyService propertyService = new PropertyService();
-    DistrictService districtService = new DistrictService();
-
-    propertyService.executePropertyLogic();
-    districtService.executeDistrictLogic();
+    LogicExecutor logicExecutor = new LogicExecutor();
+    logicExecutor.executePropertyLogic();
+    logicExecutor.executeDistrictLogic();
   }
 }
