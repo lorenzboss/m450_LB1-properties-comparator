@@ -58,6 +58,18 @@
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-junit5-plugin</artifactId>
+            <version>1.2.0</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -68,10 +80,26 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <argLine>
-                        -Xshare:off -XX:+EnableDynamicAgentLoading -javaagent:${settings.localRepository}/org/mockito/mockito-core/5.14.1/mockito-core-5.14.1.jar
+                        -Xshare:off -XX:+EnableDynamicAgentLoading
                     </argLine>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.17.1</version>
+                <configuration>
+                    <targetClasses>
+                        <param>org.example.properties.logic.HighestPrice</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>org.example.properties.logic.HighestPriceTest</param>
+                    </targetTests>
+                </configuration>
+
+            </plugin>
+
 
         </plugins>
     </build>
