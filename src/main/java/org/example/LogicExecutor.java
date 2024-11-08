@@ -31,13 +31,6 @@ public class LogicExecutor {
                 System.out.printf(
                     "%3d: selling price CHF: %d%n", entry.getKey(), entry.getValue()));
 
-    System.out.println("\n\nAverage price per number of rooms:");
-    averagePrice
-        .averagePricePerNumberOfRooms()
-        .forEach(
-            entry ->
-                System.out.printf("Rooms: %9s, price: %.2f%n", entry.getKey(), entry.getValue()));
-
     System.out.println("\n\nAverage price per year for properties:");
     averagePrice
         .averagePricePerYear()
