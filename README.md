@@ -34,13 +34,31 @@ einer anderen Entwicklungsumgebung ausgeführt wird.**
 
 ### Unit Test 1: Mock statt DB-Verbindung
 
-Für den ersten Unit-Test teste ich die `mostExpensivePropertiesPrice` Methode in der `HighestPrice` Klasse.
-Diese Methode gibt die teuersten Immobilienpreise zurück, die in der Datenbank gespeichert sind.
+Für den ersten Unit-Test teste ich die `averagePricePerYear` Methode in der `AveragePrice` Klasse.
+Diese Methode errechnet den durchschnittlichen Verkaufspreis der Immobilien pro Jahr.
 
 ### Unit Test 2: Mutation-Testing (Eigene Idee)
 
-Für den zweiten Unit-Test teste ich die `averagePricePerYear` Methode in der `AveragePrice` Klasse.
+Für den zweiten Unit-Test teste ich die `mostExpensivePropertiesPrice` Methode in der `HighestPrice` Klasse.
+Diese Methode gibt die Preise der teuersten Immobilien zurück.
 Die Idee ist dass ich Mutation-Testing verwende, um zu überprüfen, ob die Methode korrekt funktioniert.
+Für die manuelle Mutation kann man zum Beispiel:
+- den AtomicInteger auf 0 setzen
+- das Filtern der Immobilien entfernen
+- das absteigende Sortieren der Immobilien ändern
 
 ## Test-Driven-Development (TDD)
+
 Für das Test-Driven-Development erstelle ich eine neue Methode, welche die Districts aggregiert.
+
+## Test ausführen
+### Normale Tests ausführen:
+```
+mvn test
+```
+
+### Mutation-Tests ausführen:
+```
+mvn org.pitest:pitest-maven:mutationCoverage
+```
+
