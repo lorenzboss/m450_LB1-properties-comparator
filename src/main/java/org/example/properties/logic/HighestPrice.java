@@ -15,6 +15,11 @@ import org.example.properties.PropertyService;
  * @version 2.0
  */
 public class HighestPrice {
+  private final PropertyService propertyService;
+
+  public HighestPrice(PropertyService propertyService) {
+    this.propertyService = propertyService;
+  }
 
   /**
    * Prints the price of the most expensive properties.
@@ -22,8 +27,8 @@ public class HighestPrice {
    * @param limit the number of properties to print
    * @return the list of the most expensive properties
    */
-  public static List<Map.Entry<Integer, Integer>> mostExpensivePropertiesPrice(int limit) {
-    List<Property> propertyList = PropertyService.getProperties();
+  public List<Map.Entry<Integer, Integer>> mostExpensiveProperties(int limit) {
+    List<Property> propertyList = propertyService.getProperties();
     AtomicInteger index = new AtomicInteger(1);
 
     return propertyList.stream()
@@ -32,24 +37,6 @@ public class HighestPrice {
         .sorted(Comparator.reverseOrder())
         .limit(limit)
         .map(price -> Map.entry(index.getAndIncrement(), price))
-        .toList();
-  }
-
-  /**
-   * Prints the most expensive properties.
-   *
-   * @param limit the number of properties to print
-   * @return the list of the most expensive properties
-   */
-  public static List<Map.Entry<Integer, Property>> mostExpensiveProperties(int limit) {
-    List<Property> propertyList = PropertyService.getProperties();
-    AtomicInteger index = new AtomicInteger(1);
-
-    return propertyList.stream()
-        .filter(property -> property.price() != null)
-        .sorted(Comparator.comparing(Property::price).reversed())
-        .limit(limit)
-        .map(property -> Map.entry(index.getAndIncrement(), property))
         .toList();
   }
 }

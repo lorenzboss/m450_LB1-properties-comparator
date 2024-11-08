@@ -13,14 +13,19 @@ import org.example.properties.Rooms;
  * @version 2.0
  */
 public class AveragePrice {
+  private final PropertyService propertyService;
+
+  public AveragePrice(PropertyService propertyService) {
+    this.propertyService = propertyService;
+  }
 
   /**
    * Prints the average price per district_number.
    *
    * @return the list of the average price per district_number
    */
-  public static List<Map.Entry<Rooms, Double>> averagePricePerNumberOfRooms() {
-    List<Property> propertyList = PropertyService.getProperties();
+  public List<Map.Entry<Rooms, Double>> averagePricePerNumberOfRooms() {
+    List<Property> propertyList = propertyService.getProperties();
 
     return propertyList.stream()
         .filter(property -> property.price() != null)
@@ -36,8 +41,8 @@ public class AveragePrice {
    *
    * @return the list of the average price per year
    */
-  public static List<Map.Entry<Integer, Double>> averagePricePerYear() {
-    List<Property> propertyList = PropertyService.getProperties();
+  public List<Map.Entry<Integer, Double>> averagePricePerYear() {
+    List<Property> propertyList = propertyService.getProperties();
 
     return propertyList.stream()
         .filter(property -> property.price() != null)

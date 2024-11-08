@@ -12,14 +12,19 @@ import org.example.properties.PropertyService;
  * @version 2.0
  */
 public class NumberOfSales {
+  private final PropertyService propertyService;
+
+  public NumberOfSales(PropertyService propertyService) {
+    this.propertyService = propertyService;
+  }
 
   /**
    * Calculates the number of sales.
    *
    * @return the number of sales
    */
-  public static int numberOfSales() {
-    List<Property> propertyList = PropertyService.getProperties();
+  public int numberOfSales() {
+    List<Property> propertyList = propertyService.getProperties();
     return propertyList.size();
   }
 
@@ -28,8 +33,8 @@ public class NumberOfSales {
    *
    * @return the list of sales per year
    */
-  public static List<Map.Entry<Integer, Long>> numberOfSalesPerYear() {
-    List<Property> propertyList = PropertyService.getProperties();
+  public List<Map.Entry<Integer, Long>> numberOfSalesPerYear() {
+    List<Property> propertyList = propertyService.getProperties();
 
     return propertyList.stream()
         .collect(Collectors.groupingBy(Property::year, Collectors.counting()))
