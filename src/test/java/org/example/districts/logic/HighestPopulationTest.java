@@ -1,8 +1,7 @@
-package org.example.district.logic;
+package org.example.districts.logic;
 
 import org.example.districts.District;
 import org.example.districts.DistrictService;
-import org.example.districts.logic.HighestPopulation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
