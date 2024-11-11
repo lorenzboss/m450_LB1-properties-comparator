@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -38,4 +39,40 @@ public class HighestPopulationTest {
 
         assertEquals(73_000, highestPopulationResult);
     }
+
+    @Test
+    void highestPopulationWithEmptyDistrictList() {
+        Mockito.when(districtServiceMock.getDistricts()).thenReturn(Collections.emptyList());
+
+        int result = highestPopulation.highestPopulation();
+
+        assertEquals(0, result);
+    }
+
+    @Test
+    void highestPopulationWithSingleDistrict() {
+        List<District> districts = List.of(
+                new District(1, "Arlesheim", 45000, 96, 42, 32000)
+        );
+        Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
+
+        int result = highestPopulation.highestPopulation();
+
+        assertEquals(45000, result);
+    }
+
+    @Test
+    void highestPopulationWithNegativePopulation() {
+        List<District> districts = Arrays.asList(
+                new District(1, "Arlesheim", -1000, 96, 42, 32000),
+                new District(2, "Laufen", 30000, 92, 43, 8500),
+                new District(3, "Liestal", 20000, 85, 41, 27000)
+        );
+        Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
+
+        int result = highestPopulation.highestPopulation();
+
+        assertEquals(30000, result);
+    }
+
 }
