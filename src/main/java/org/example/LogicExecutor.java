@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.districts.DistrictService;
+import org.example.districts.logic.AverageArea;
+import org.example.districts.logic.HighestPopulation;
 import org.example.properties.PropertyService;
 import org.example.properties.logic.AveragePrice;
 import org.example.properties.logic.HighestPrice;
@@ -12,6 +14,8 @@ public class LogicExecutor {
   private final NumberOfSales numberOfSales = new NumberOfSales(propertyService);
   private final HighestPrice highestPrice = new HighestPrice(propertyService);
   private final AveragePrice averagePrice = new AveragePrice(propertyService);
+  private final AverageArea averageArea = new AverageArea(districtService);
+  private final HighestPopulation highestPopulation = new HighestPopulation(districtService);
 
   public void executePropertyLogic() {
     System.out.println("\n\nNumber of properties sold: " + numberOfSales.numberOfSales());
@@ -41,7 +45,9 @@ public class LogicExecutor {
   }
 
   public void executeDistrictLogic() {
-    System.out.println("\n\nDistricts:");
-    districtService.getDistricts().forEach(System.out::println);
+    System.out.println(
+        "\n\nThe district with the highest population: " + highestPopulation.highestPopulation());
+
+    System.out.println("\n\nAverage area of districts: " + averageArea.averageDistrictArea());
   }
 }
