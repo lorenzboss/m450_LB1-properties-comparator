@@ -8,12 +8,17 @@ import org.example.districts.District;
 import org.example.districts.DistrictService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 public class HighestPopulationTest {
 
-  private DistrictService districtServiceMock;
-  private HighestPopulation highestPopulation;
+  @Mock private DistrictService districtServiceMock;
+  @InjectMocks private HighestPopulation highestPopulation;
 
   @BeforeEach
   void setUp() {

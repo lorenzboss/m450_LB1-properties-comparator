@@ -5,20 +5,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 import org.example.districts.District;
 import org.example.districts.DistrictService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 public class AverageAreaTest {
 
-  private DistrictService districtServiceMock;
-  private AverageArea averageArea;
-
-  @BeforeEach
-  void setUp() {
-    districtServiceMock = Mockito.mock(DistrictService.class);
-    averageArea = new AverageArea(districtServiceMock);
-  }
+  @Mock private DistrictService districtServiceMock;
+  @InjectMocks private AverageArea averageArea;
 
   @Test
   void averageArea_CalculatesCorrectly() {
