@@ -21,38 +21,37 @@ public class AverageAreaTest {
   }
 
   @Test
-  void averageAreaTest() {
+  void averageArea_CalculatesCorrectly() {
     List<District> districts =
-        Arrays.asList(
-            new District(1, "Arlesheim", 73000, 96, 42, 32000),
-            new District(2, "Laufen", 19000, 92, 43, 8500),
-            new District(3, "Liestal", 62000, 85, 41, 27000),
-            new District(4, "Sissach", 37000, 140, 40, 15000),
-            new District(5, "Waldenburg", 10000, 103, 45, 4300));
+        List.of(
+            new District(1, "Arlesheim", 1, 200, 1, 1),
+            new District(2, "Laufen", 1, 100, 1, 1),
+            new District(3, "Liestal", 1, 80, 1, 1),
+            new District(4, "Sissach", 1, 140, 1, 1));
     Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
 
     double result = averageArea.averageDistrictArea();
 
-    // Durchschnitt: (96 + 92 + 85 + 140 + 103) / 5 = 103.2
-    assertEquals(103.2, result, 0.01);
+    // Durchschnitt: (200 + 100 + 80 + 140) / 4 = 130
+    assertEquals(130, result, 0.01);
   }
 
   @Test
-  void averageAreaWithEmptyDistrictList() {
+  void averageArea_WithEmptyDistrictList() {
     Mockito.when(districtServiceMock.getDistricts()).thenReturn(Collections.emptyList());
 
     double result = averageArea.averageDistrictArea();
 
-    assertEquals(0.0, result, 0.01);
+    assertEquals(0.0, result);
   }
 
   @Test
-  void averageAreaWithIdenticalAreas() {
+  void averageArea_WithIdenticalAreas() {
     List<District> districts =
-        Arrays.asList(
-            new District(1, "Arlesheim", 73000, 100, 42, 32000),
-            new District(2, "Laufen", 19000, 100, 43, 8500),
-            new District(3, "Liestal", 62000, 100, 41, 27000));
+        List.of(
+            new District(1, "Arlesheim", 1, 100, 1, 1),
+            new District(2, "Laufen", 1, 100, 1, 1),
+            new District(3, "Liestal", 1, 100, 1, 1));
     Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
 
     double result = averageArea.averageDistrictArea();

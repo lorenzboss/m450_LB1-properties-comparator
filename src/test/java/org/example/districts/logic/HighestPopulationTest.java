@@ -2,7 +2,6 @@ package org.example.districts.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.example.districts.District;
@@ -25,18 +24,17 @@ public class HighestPopulationTest {
   @Test
   void highestPopulationTest() {
     List<District> districts =
-        Arrays.asList(
-            new District(1, "Arlesheim", 73000, 96, 42, 32000),
-            new District(2, "Laufen", 19000, 92, 43, 8500),
-            new District(3, "Liestal", 62000, 85, 41, 27000),
-            new District(4, "Sissach", 37000, 140, 40, 15000),
-            new District(5, "Waldenburg", 10000, 103, 45, 4300));
+        List.of(
+            new District(1, "Arlesheim", 100_000, 1, 1, 1),
+            new District(2, "Laufen", 50_000, 1, 1, 1),
+            new District(3, "Liestal", 18_000, 1, 1, 1),
+            new District(4, "Sissach", 40, 1, 1, 1));
 
     Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
 
     int highestPopulationResult = highestPopulation.highestPopulation();
 
-    assertEquals(73_000, highestPopulationResult);
+    assertEquals(100_000, highestPopulationResult);
   }
 
   @Test
@@ -50,21 +48,21 @@ public class HighestPopulationTest {
 
   @Test
   void highestPopulationWithSingleDistrict() {
-    List<District> districts = List.of(new District(1, "Arlesheim", 45000, 96, 42, 32000));
+    List<District> districts = List.of(new District(1, "Arlesheim", 150_000, 1, 1, 1));
     Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
 
     int result = highestPopulation.highestPopulation();
 
-    assertEquals(45000, result);
+    assertEquals(150_000, result);
   }
 
   @Test
   void highestPopulationWithNegativePopulation() {
     List<District> districts =
-        Arrays.asList(
-            new District(1, "Arlesheim", -1000, 96, 42, 32000),
-            new District(2, "Laufen", 30000, 92, 43, 8500),
-            new District(3, "Liestal", 20000, 85, 41, 27000));
+        List.of(
+            new District(1, "Arlesheim", -1000, 1, 1, 1),
+            new District(2, "Laufen", 30000, 1, 1, 1),
+            new District(3, "Liestal", 20000, 1, 1, 1));
     Mockito.when(districtServiceMock.getDistricts()).thenReturn(districts);
 
     int result = highestPopulation.highestPopulation();
