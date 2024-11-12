@@ -43,6 +43,7 @@ Für den zweiten Unit-Test teste ich die `mostExpensivePropertiesPrice` Methode 
 Diese Methode gibt die Preise der teuersten Immobilien zurück.
 Die Idee ist dass ich Mutation-Testing verwende, um zu überprüfen, ob die Methode korrekt funktioniert.
 Für die manuelle Mutation kann man zum Beispiel:
+
 - den AtomicInteger auf 0 setzen
 - das Filtern der Immobilien entfernen
 - das absteigende Sortieren der Immobilien ändern
@@ -52,12 +53,15 @@ Für die manuelle Mutation kann man zum Beispiel:
 Für das Test-Driven-Development erstelle ich eine neue Methode, welche die Districts aggregiert.
 
 ## Test ausführen
+
 ### Normale Tests ausführen:
+
 ```
 mvn test
 ```
 
 ### Mutation-Tests ausführen:
+
 ```
 mvn org.pitest:pitest-maven:mutationCoverage
 ```

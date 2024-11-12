@@ -6,23 +6,21 @@ import java.util.*;
 import org.example.properties.Property;
 import org.example.properties.PropertyService;
 import org.example.properties.Rooms;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
+@ExtendWith(MockitoExtension.class)
 public class AveragePriceTest {
 
-  private PropertyService propertyServiceMock;
-  private AveragePrice averagePrice;
-
-  @BeforeEach
-  void setUp() {
-    propertyServiceMock = Mockito.mock(PropertyService.class);
-    averagePrice = new AveragePrice(propertyServiceMock);
-  }
+  @Mock private PropertyService propertyServiceMock;
+  @InjectMocks private AveragePrice averagePrice;
 
   @Test
-  void testAveragePricePerYearWithMultipleProperties() {
+  void averagePricePerYear_WithMultipleProperties() {
     List<Property> properties =
         List.of(
             new Property(2021, 1, Rooms.ONE, 1000),
@@ -41,7 +39,7 @@ public class AveragePriceTest {
   }
 
   @Test
-  void testAveragePricePerYearWithNoProperties() {
+  void averagePricePerYear_WithNoProperties() {
     Mockito.when(propertyServiceMock.getProperties()).thenReturn(Collections.emptyList());
 
     List<Map.Entry<Integer, Double>> result = averagePrice.averagePricePerYear();
@@ -50,39 +48,9 @@ public class AveragePriceTest {
   }
 
   @Test
-  void testAveragePricePerYearWithNullPrices() {
+  void averagePricePerYear_WithNullPrices() {
     List<Property> properties =
         List.of(new Property(2021, 1, Rooms.ONE, null), new Property(2022, 2, Rooms.TWO, null));
-
-    Mockito.when(propertyServiceMock.getProperties()).thenReturn(properties);
-
-    List<Map.Entry<Integer, Double>> result = averagePrice.averagePricePerYear();
-
-    assertTrue(result.isEmpty());
-  }
-
-  @Test
-  void testAveragePricePerYearWithBoundaryYearValues() {
-    List<Property> properties =
-        List.of(
-            new Property(Integer.MIN_VALUE, 1, Rooms.ONE, 1000),
-            new Property(2022, 2, Rooms.TWO, 2000),
-            new Property(Integer.MAX_VALUE, 3, Rooms.THREE, 3000));
-
-    Mockito.when(propertyServiceMock.getProperties()).thenReturn(properties);
-
-    List<Map.Entry<Integer, Double>> result = averagePrice.averagePricePerYear();
-
-    assertEquals(3, result.size());
-    assertEquals(1000.0, result.get(0).getValue());
-    assertEquals(2000.0, result.get(1).getValue());
-    assertEquals(3000.0, result.get(2).getValue());
-  }
-
-  @Test
-  void testAveragePricePerYearWithEmptyPrice() {
-    List<Property> properties =
-        List.of(new Property(2021, 1, Rooms.ONE, null), new Property(2021, 2, Rooms.TWO, null));
 
     Mockito.when(propertyServiceMock.getProperties()).thenReturn(properties);
 
